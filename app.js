@@ -21,6 +21,20 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Error Handling
+
+// 404 
+app.use(function (next) {
+    next(createError(404));
+});
+
+// 500
+app.use(function (err, res) {
+    res.locals.message = err.message;
+    res.status(err.status || 500).send('Error');
+});
 
 //Initiate Server
 server.listen(port, () => console.log('App listening at ' + port));
+
+module.exports = app;
