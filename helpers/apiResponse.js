@@ -1,5 +1,5 @@
 const axios = require('axios');
-const { fetchPosts } = require('./fetchPosts')
+const { fetchPosts } = require('./fetchPosts');
 
 const apiResponse = async (arr, res) => {
 
@@ -11,5 +11,6 @@ const apiResponse = async (arr, res) => {
 }
 
 
-module.exports = { apiResponse }
+module.exports = { apiResponse };
 
+// Error Responses: If `tags` parameter is not present: Response body (JSON): { "error": "Tags parameter is required" } Response status code: 400 If a `sortBy` or `direction` are invalid values, specify an error like below: Response body (JSON): { "error": "sortBy parameter is invalid" } Response status code: 400
