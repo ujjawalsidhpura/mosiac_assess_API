@@ -6,7 +6,8 @@ const http = require('http');
 const port = process.env.PORT || '3000';
 const cookieParser = require('cookie-parser');
 const bodyParser = require("body-parser");
-const logger = require('morgan');
+const morgan = require('morgan');
+const createError = require('http-errors');
 
 // Initialize
 const app = express();
@@ -15,23 +16,28 @@ const server = http.createServer(app);
 // Middleware Setup
 app.set('port', port);
 app.use(bodyParser.json());
-app.use(logger('dev'));
+app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Error Handling
+// Base Routes 
+/** Host all future base routes below here **/
+const api = require('./routes/api');
+app.use('/api', api);
 
-// 404 
-app.use(function (next) {
+// Error Handling
+// 404 Error
+app.use(function (req, res, next) {
     next(createError(404));
 });
 
-// 500
-app.use(function (err, res) {
+// 500 Error
+app.use(function (err, req, res, next) {
     res.locals.message = err.message;
-    res.status(err.status || 500).send('Error');
+    res.locals.error = req.app.get('env') === 'development' ? err : {};
+    res.status(err.status || 500).send('Error')
 });
 
 //Initiate Server
