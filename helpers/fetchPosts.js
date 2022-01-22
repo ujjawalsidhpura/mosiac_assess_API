@@ -1,5 +1,6 @@
 const axios = require("axios");
 const res = require("express/lib/response");
+const { handlePromises } = require('./handlePromises')
 
 const fetchPosts = async (arr) => {
 
@@ -12,7 +13,7 @@ const fetchPosts = async (arr) => {
     await axios
         .all(promiseArr)
         .then((responses) => {
-            posts = process(responses)
+            posts = handlePromises(responses)
         })
         .catch(errors => {
             console.error(errors);
@@ -20,15 +21,6 @@ const fetchPosts = async (arr) => {
 
     return posts;
 };
-
-const process = (responses) => {
-    let posts = [];
-    for (let eachRes of responses) {
-        let temp = (eachRes.data.posts)
-        posts.push(temp)
-    }
-    return posts;
-}
 
 module.exports = { fetchPosts }
 
