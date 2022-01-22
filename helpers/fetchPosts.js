@@ -1,12 +1,35 @@
-const fetchPosts = async (arr) => {
-    try {
-        const res = await Promise.all(arr);
-        const data = res.map((res) => res.data.posts);
+const axios = require("axios");
+const res = require("express/lib/response");
 
-        return data[0]
-    } catch {
-        throw Error("Promise failed");
-    }
+const fetchPosts = async (arr) => {
+
+    let posts;
+
+    const promiseArr = await arr.map((eachTag) => {
+        return axios.get(`https://api.hatchways.io/assessment/blog/posts?tag=${eachTag}`)
+    })
+
+    await axios
+        .all(promiseArr)
+        .then((responses) => {
+            posts = process(responses)
+        })
+        .catch(errors => {
+            console.error(errors);
+        });
+
+    return posts;
 };
 
+const process = (responses) => {
+    let posts = [];
+    for (let eachRes of responses) {
+        let temp = (eachRes.data.posts)
+        posts.push(temp)
+    }
+    return posts;
+}
+
 module.exports = { fetchPosts }
+
+
