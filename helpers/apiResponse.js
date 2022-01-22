@@ -1,19 +1,15 @@
-const axios = require('axios')
-const res = require("express/lib/response")
+const axios = require('axios');
+const { fetchPosts } = require('./fetchPosts')
 
-function apiResponse(arr, res) {
+const apiResponse = async (arr, res) => {
 
-    arr.map((eachTag) => {
-        axios
-            .get(`https://api.hatchways.io/assessment/blog/posts?tag=${eachTag}`)
-            .then((response) => {
-                const posts = response.data.posts
+    const promiseArr = arr.map((tag) =>
+        axios.get(`https://api.hatchways.io/assessment/blog/posts?tag=${tag}`));
 
-                res.send(posts)
-            })
-            .catch(error => console.log(error))
-    })
-
+    const data = await fetchPosts(promiseArr);
+    res.status(200).send(data);
 }
 
+
 module.exports = { apiResponse }
+
