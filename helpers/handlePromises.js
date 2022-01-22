@@ -1,10 +1,20 @@
+const res = require('express/lib/response');
+const { filterDuplicates } = require('./filterDuplicates')
+
 const handlePromises = (responses) => {
+
     let posts = [];
+
     for (let eachRes of responses) {
         let temp = (eachRes.data.posts)
-        posts.push(temp)
+        for (let each of temp) {
+            posts.push(each)
+        }
     }
-    return posts;
+
+    const filteredPosts = filterDuplicates(posts)
+
+    return filteredPosts
 }
 
 module.exports = { handlePromises }
