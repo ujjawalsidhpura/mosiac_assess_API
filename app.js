@@ -23,7 +23,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Base Routes 
-/** Host all future base routes below here **/
+// Host all future base routes below here 
 const api = require('./routes/api');
 app.use('/api', api);
 
