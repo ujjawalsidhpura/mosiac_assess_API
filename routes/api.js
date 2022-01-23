@@ -18,8 +18,7 @@ router.get('/posts', (req, res) => {
     let validatedParams = queryValidator(queryStr, res);
 
     // If all given paramters are Valid, then proceed to fetch and respond
-    let temptags = validatedParams.tags.split(',')
-    apiResponse(temptags, res);
+    apiResponse(validatedParams, res);
 
 })
 

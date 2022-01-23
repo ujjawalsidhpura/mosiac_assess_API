@@ -1,5 +1,4 @@
-const res = require('express/lib/response');
-const { filterDuplicates } = require('./filterDuplicates')
+const { filterDuplicates } = require('./filterApiResponse')
 
 const handlePromises = (responses) => {
 
