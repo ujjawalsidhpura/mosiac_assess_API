@@ -3,6 +3,7 @@ const router = express.Router();
 const { apiResponse } = require('../helpers/apiResponse');
 const { queryValidator } = require('../helpers/queryValidator');
 
+
 router.get('/ping', (req, res) => {
 
     res
@@ -10,6 +11,7 @@ router.get('/ping', (req, res) => {
         .send({ "success": true })
 
 });
+
 
 router.get('/posts', (req, res) => {
     const queryStr = req.query;
@@ -21,6 +23,5 @@ router.get('/posts', (req, res) => {
     apiResponse(validatedParams, res);
 
 })
-
 
 module.exports = router;

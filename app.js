@@ -23,11 +23,12 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-//Load new Cache
-let cache = flatCache.load('productsCache', path.resolve('./cache'));
+// Caching 
+// Load New Cache
+const cache = flatCache.load('postCache', path.resolve('./cache'));
 
-// Create flat cache routes
-let flatCacheMiddleware = (req, res, next) => {
+// Create Flat-cache routes
+const flatCacheMiddleware = (req, res, next) => {
     let key = '__express__' + req.originalUrl || req.url
     let cacheContent = cache.getKey(key);
     if (cacheContent) {
@@ -48,7 +49,8 @@ let flatCacheMiddleware = (req, res, next) => {
 const api = require('./routes/api');
 app.use('/api', flatCacheMiddleware, api);
 
-// Error Handling
+
+// Error Handling 
 // 404 Error
 app.use(function (req, res, next) {
     next(createError(404));
@@ -61,7 +63,8 @@ app.use(function (err, req, res, next) {
     res.status(err.status || 500).send('Error')
 });
 
-//Initiate Server
+
+// Initiate Server
 server.listen(port, () => console.log('App listening at ' + port));
 
 module.exports = app;
