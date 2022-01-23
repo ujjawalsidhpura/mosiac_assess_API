@@ -1,19 +1,20 @@
-const { filterDuplicates } = require('./filterApiResponse')
+const { filterDuplicates } = require('./filterApiResponse');
 
 const handlePromises = (responses) => {
 
     let posts = [];
 
     for (let eachRes of responses) {
-        let temp = (eachRes.data.posts)
+        let temp = (eachRes.data.posts);
+
         for (let each of temp) {
-            posts.push(each)
+            posts.push(each);
         }
     }
 
-    const filteredPosts = filterDuplicates(posts)
+    const filteredPosts = filterDuplicates(posts);
 
-    return filteredPosts
+    return filteredPosts;
 }
 
 module.exports = { handlePromises }

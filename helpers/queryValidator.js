@@ -4,8 +4,10 @@ const queryValidator = (queryStr, res) => {
 
     // "Tags" Param MUST be present
     if (queryStr.tags) {
-        tags = queryStr.tags
+
+        tags = queryStr.tags;
     } else {
+
         return res
             .status(400)
             .send({ "error": "Tags parameter is required" })
@@ -15,8 +17,10 @@ const queryValidator = (queryStr, res) => {
     if (queryStr.sortBy) {
 
         if (queryStr.sortBy === 'id' || queryStr.sortBy === 'reads' || queryStr.sortBy === 'likes' || queryStr.sortBy === 'popularity') {
-            sortBy = queryStr.sortBy
+
+            sortBy = queryStr.sortBy;
         } else {
+
             return res
                 .status(400)
                 .send({ "error": "sortBy parameter is invalid" })
@@ -26,8 +30,10 @@ const queryValidator = (queryStr, res) => {
     if (queryStr.direction) {
 
         if (queryStr.direction === 'desc' || queryStr.direction === 'asc') {
-            direction = queryStr.direction
+
+            direction = queryStr.direction;
         } else {
+
             return res
                 .status(400)
                 .send({ "error": "Direction parameter is invalid" })
@@ -35,7 +41,7 @@ const queryValidator = (queryStr, res) => {
     }
 
     // Only If none of the conditions fail, then param obj with values will be return
-    return { tags, sortBy, direction }
+    return { tags, sortBy, direction };
 }
 
 module.exports = { queryValidator }

@@ -30,6 +30,4 @@ describe("test fetchPost function", () => {
 
         expect(result.length).toEqual(65);
     });
-
-
 });

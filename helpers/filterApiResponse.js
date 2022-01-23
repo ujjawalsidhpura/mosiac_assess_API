@@ -4,22 +4,22 @@ const filterDuplicates = (arr) => {
     //Refer './handlePromises.js' 
 
     return Object.values(arr.reduce((acc, cur) =>
-        Object.assign(acc, { [cur.id]: cur }), {}))
+        Object.assign(acc, { [cur.id]: cur }), {}));
 
 }
 
 const optionalFilters = (arr, obj) => {
 
-    const sortBy = obj.sortBy
-    const direction = obj.direction
+    const sortBy = obj.sortBy;
+    const direction = obj.direction;
 
     if (sortBy && !direction || sortBy && direction === 'asc') {
 
-        return arr.sort((a, b) => { return a[sortBy] - b[sortBy] })
+        return arr.sort((a, b) => { return a[sortBy] - b[sortBy] });
 
     } else if (obj.sortBy && obj.direction === 'desc') {
 
-        return arr.sort((a, b) => { return b[sortBy] - a[sortBy] })
+        return arr.sort((a, b) => { return b[sortBy] - a[sortBy] });
 
     } else {
 

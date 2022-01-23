@@ -4,7 +4,6 @@ describe("handlePromises function", () => {
 
     const promises = [{ data: { posts: [Promise] } }, { data: { posts: [Promise] } }];
 
-
     test("it returns an array of resolved promises, given an array of unresolved Promises", async () => {
         const result = await handlePromises(promises);
 

@@ -6,7 +6,7 @@ https://mosiac-assessment-api.herokuapp.com/api/posts
 
 ### Valid Routes
 
-`/api/ping`
+`/api/ping`<br>
 `/posts/:queryString`
 
 - queryString contains 1 required param and 2 optional params.
@@ -35,9 +35,8 @@ Either fetch API using heroku link or download & run this repo locally.
 
 `clone the project` <br>
 `cd to the folder` <br>
-`npm install`
-<br>
-` npm start`
+`npm install`<br>
+`npm start`
 
 ### To Test
 

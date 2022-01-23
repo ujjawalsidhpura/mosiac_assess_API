@@ -9,14 +9,14 @@ const fetchPosts = async (arr) => {
     //Map through each Tag to make unique request to API with that tag
     const promiseArr = await arr.map((eachTag) => {
         return axios
-            .get(`https://api.hatchways.io/assessment/blog/posts?tag=${eachTag}`)
+            .get(`https://api.hatchways.io/assessment/blog/posts?tag=${eachTag}`);
     })
 
     //Combine all resolved promises into posts Array[]
     await axios
         .all(promiseArr)
         .then((responses) => {
-            posts = handlePromises(responses)
+            posts = handlePromises(responses);
         })
         .catch(errors => {
             console.error(errors);

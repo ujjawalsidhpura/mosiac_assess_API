@@ -8,7 +8,7 @@ router.get('/ping', (req, res) => {
 
     res
         .status(200)
-        .send({ "success": true })
+        .send({ "success": true });
 
 });
 
@@ -24,8 +24,6 @@ router.get('/posts', (req, res) => {
         // If all given paramters are Valid, then proceed to fetch and respond
         apiResponse(validatedParams, res);
     }
-
-
 })
 
 module.exports = router;

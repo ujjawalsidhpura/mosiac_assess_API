@@ -1,5 +1,5 @@
 const { fetchPosts } = require('./fetchPosts');
-const { optionalFilters } = require('./filterApiResponse')
+const { optionalFilters } = require('./filterApiResponse');
 
 const apiResponse = async (obj, res) => {
 
@@ -9,7 +9,7 @@ const apiResponse = async (obj, res) => {
     // Make API request
     const data = await fetchPosts(tagsArr);
 
-    const filteredData = optionalFilters(data, obj)
+    const filteredData = optionalFilters(data, obj);
 
     res.status(200).send({ posts: filteredData });
 }

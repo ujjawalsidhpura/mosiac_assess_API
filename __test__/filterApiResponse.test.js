@@ -41,11 +41,13 @@ describe("optionalFilter function", () => {
         sortBy: undefined,
         direction: undefined
     }
+
     const testObj2 = {
         tags: [],
         sortBy: 'likes',
         direction: undefined
     }
+
     const testObj3 = {
         tags: [],
         sortBy: 'likes',
