@@ -17,7 +17,7 @@ https://mosiac-assessment-api.herokuapp.com/api/posts
 
 Example api request:
 <br>
-https://mosiac-assessment-api.herokuapp.com/api/posts/tags=health,politics&sortBy=likes&direction=desc
+https://mosiac-assessment-api.herokuapp.com/api/posts?tags=health,politics&sortBy=likes&direction=desc
 
 ### Stack
 
