@@ -1,22 +1,23 @@
-## Assessment Api for Mosiac
+## Assessment-Api for Mosiac
 
-## Heroku link
+### Heroku link
 
-https://mosiac-assessment-api.herokuapp.com/
+https://mosiac-assessment-api.herokuapp.com/api/posts
 
-## Valid Routes
+### Valid Routes
 
 `/api/ping`
 `/posts/:queryString`
 
 - queryString contains 1 required param and 2 optional params.
-- tags(required) (politics,health,science,history.....)
-- sortBy (id,likes,reads, popularity) (optional)
-- direction (desc,asc) (optional)
+- tags :(required) (politics,health,science,history.....)
+- sortBy : (id,likes,reads, popularity) (optional)
+- direction : (desc,asc) (optional)
   <br>
 
-Example api request:<br>
-` https://mosiac-assessment-api.herokuapp.com/api/posts/tags=health,politics&sortBy=likes&direction=desc`
+Example api request:
+<br>
+https://mosiac-assessment-api.herokuapp.com/api/posts/tags=health,politics&sortBy=likes&direction=desc
 
 ### Stack
 
