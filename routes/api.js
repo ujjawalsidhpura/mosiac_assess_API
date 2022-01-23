@@ -14,6 +14,7 @@ router.get('/ping', (req, res) => {
 
 
 router.get('/posts', (req, res) => {
+
     const queryStr = req.query;
 
     //Validate the Query
