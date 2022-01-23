@@ -4,9 +4,9 @@ const express = require('express');
 const path = require('path');
 const http = require('http');
 const port = process.env.PORT || '3000';
-const cookieParser = require('cookie-parser');
+// const cookieParser = require('cookie-parser');
 const bodyParser = require("body-parser");
-const morgan = require('morgan');
+// const morgan = require('morgan');
 const createError = require('http-errors');
 const flatCache = require('flat-cache');
 
@@ -17,10 +17,10 @@ const server = http.createServer(app);
 // Middleware Setup
 app.set('port', port);
 app.use(bodyParser.json());
-app.use(morgan('dev'));
+// app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
+// app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Caching 
@@ -46,8 +46,8 @@ const flatCacheMiddleware = (req, res, next) => {
 
 // Base Routes 
 // Host all future base routes below here 
-const api = require('./routes/api');
-app.use('/api', flatCacheMiddleware, api);
+const apiRouter = require('./routes/api');
+app.use('/api', flatCacheMiddleware, apiRouter);
 
 
 // Error Handling 

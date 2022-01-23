@@ -19,8 +19,11 @@ router.get('/posts', (req, res) => {
     //Validate the Query
     let validatedParams = queryValidator(queryStr, res);
 
-    // If all given paramters are Valid, then proceed to fetch and respond
-    apiResponse(validatedParams, res);
+    if (validatedParams) {
+        // If all given paramters are Valid, then proceed to fetch and respond
+        apiResponse(validatedParams, res);
+    }
+
 
 })
 
