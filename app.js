@@ -8,6 +8,7 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require("body-parser");
 const morgan = require('morgan');
 const createError = require('http-errors');
+const flatCache = require('flat-cache');
 
 // Initialize
 const app = express();
@@ -22,10 +23,30 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+//Load new Cache
+let cache = flatCache.load('productsCache', path.resolve('./cache'));
+
+// Create flat cache routes
+let flatCacheMiddleware = (req, res, next) => {
+    let key = '__express__' + req.originalUrl || req.url
+    let cacheContent = cache.getKey(key);
+    if (cacheContent) {
+        res.send(cacheContent);
+    } else {
+        res.sendResponse = res.send
+        res.send = (body) => {
+            cache.setKey(key, body);
+            cache.save();
+            res.sendResponse(body)
+        }
+        next()
+    }
+};
+
 // Base Routes 
 // Host all future base routes below here 
 const api = require('./routes/api');
-app.use('/api', api);
+app.use('/api', flatCacheMiddleware, api);
 
 // Error Handling
 // 404 Error
