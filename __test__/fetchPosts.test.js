@@ -19,14 +19,17 @@ describe("test fetchPost function", () => {
         expect(result.length).toEqual(29);
     });
 
+    test("returns an array with 25 posts with queryTags2 arg", async () => {
+        const result = await fetchPosts(queryTags2);
+
+        expect(result.length).toEqual(25);
+    });
+
     test("returns an array with 65 posts with queryTags3 arg", async () => {
         const result = await fetchPosts(queryTags3);
 
         expect(result.length).toEqual(65);
     });
-
-
-
 
 
 });
