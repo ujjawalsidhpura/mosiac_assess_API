@@ -1,4 +1,3 @@
-const axios = require('axios');
 const { fetchPosts } = require('./fetchPosts');
 const { optionalFilters } = require('./filterApiResponse')
 
