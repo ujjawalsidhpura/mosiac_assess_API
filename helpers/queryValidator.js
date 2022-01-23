@@ -5,7 +5,8 @@ const queryValidator = (queryStr, res) => {
     // "Tags" Param MUST be present
     queryStr.tags ?
         tags = queryStr.tags :
-        res.status(400)
+        res
+            .status(400)
             .send({ "error": "Tags parameter is required" })
 
 
