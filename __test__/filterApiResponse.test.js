@@ -1,5 +1,6 @@
 const { filterDuplicates, optionalFilters } = require('../helpers/filterApiResponse');
 
+// filterDuplicates Function
 describe("filterDuplicates function", () => {
 
     const testArr = [
@@ -24,6 +25,7 @@ describe("filterDuplicates function", () => {
     });
 });
 
+// optionalFilters Function
 describe("optionalFilter function", () => {
 
     const testArr = [
